@@ -45,47 +45,6 @@
       margin: auto;
     }
 
-    /* --- New Countdown Styles --- */
-    .countdown-timer {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 10px;
-    }
-    .timer-box {
-      background: #ff4081;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
-      font-size: 16px;
-      min-width: 60px;
-    }
-    .timer-box span {
-      display: block;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    /* --- New Memories Gallery Styles --- */
-    .gallery {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap; /* Allows images to wrap on small screens */
-    }
-    .gallery img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover; /* Ensures images look good */
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
     /* --- New Message Generator Styles --- */
     .message-generator {
       margin-top: 30px;
@@ -125,25 +84,6 @@
 
     <hr style="border: 1px solid #ffdde1; margin: 30px 0;">
 
-    <div class="countdown-container">
-      <h2>Our Next Special Day</h2>
-      <div id="countdown" class="countdown-timer">
-        <div class="timer-box"><span id="days">0</span>Days</div>
-        <div class="timer-box"><span id="hours">0</span>Hours</div>
-        <div class="timer-box"><span id="minutes">0</span>Mins</div>
-        <div class="timer-box"><span id="seconds">0</span>Secs</div>
-      </div>
-    </div>
-
-    <div class="memories">
-      <h2>Our Memories</h2>
-      <div class="gallery">
-        <img src="https://via.placeholder.com/150/ffdde1/d81b60?text=Memory+1" alt="Memory 1">
-        <img src="https://via.placeholder.com/150/ffdde1/d81b60?text=Memory+2" alt="Memory 2">
-        <img src="https://via.placeholder.com/150/ffdde1/d81b60?text=Memory+3" alt="Memory 3">
-      </div>
-    </div>
-
     <div class="message-generator">
       <h2>A Sweet Note Just For You</h2>
       <p id="sweet-message">Click the button for a message!</p>
@@ -153,35 +93,6 @@
   </div>
 
   <script>
-    // --- Function 1: Countdown Timer ---
-    function startCountdown() {
-      // !! এখানে আপনাদের বিশেষ দিনটির তারিখ দিন !!
-      const specialDate = new Date('January 1, 2027 00:00:00').getTime();
-
-      const interval = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = specialDate - now;
-
-        // Time calculations
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display results
-        document.getElementById('days').innerText = days;
-        document.getElementById('hours').innerText = hours;
-        document.getElementById('minutes').innerText = minutes;
-        document.getElementById('seconds').innerText = seconds;
-
-        // If countdown is over
-        if (distance < 0) {
-          clearInterval(interval);
-          document.getElementById('countdown').innerHTML = "<h2 style='color:#ff4081'>Happy Special Day! 🎉</h2>";
-        }
-      }, 1000);
-    }
-
     // --- Function 2: Message Generator ---
     function setupMessageGenerator() {
       // !! আপনারা চাইলে এখানে আরও মেসেজ যোগ করতে পারেন !!
@@ -206,7 +117,6 @@
 
     // Run functions when the page loads
     document.addEventListener('DOMContentLoaded', () => {
-      startCountdown();
       setupMessageGenerator();
     });
   </script>
